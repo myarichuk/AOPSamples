@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleAspectWeaver": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\..\\AppForDebugging\\bin\\Debug\\netcoreapp3.1\\AppForDebugging.dll"
+    }
+  }
+}
