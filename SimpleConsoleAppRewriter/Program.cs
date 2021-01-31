@@ -12,9 +12,11 @@ namespace SimpleConsoleAppRewriter
      */
     class Program
     {
+        private const string PathToLibraryToRewrite = @"..\..\..\..\SimpleLib\bin\Debug\netcoreapp3.1\SimpleLib.dll";
+
         static void Main(string[] args)
         {
-            using var moduleDefinition = ModuleDefinition.ReadModule(@"..\..\..\..\SimpleLib\bin\Debug\netcoreapp3.1\SimpleLib.dll");
+            using var moduleDefinition = ModuleDefinition.ReadModule(PathToLibraryToRewrite);
             foreach(var type in moduleDefinition.Types)
             {
                 if(type.Name.Contains("SimpleLib") && type.Namespace == "AOPSamples")
@@ -50,7 +52,7 @@ namespace SimpleConsoleAppRewriter
                             //finally call string.Format() (string interpolation is syntax sugar for calling string.Format())
                             ilProcessor.InsertBefore(firstInstruction, ilProcessor.Create(OpCodes.Call, stringFormatMethod));
                             ilProcessor.InsertBefore(firstInstruction, ilProcessor.Create(OpCodes.Ret));
-                            moduleDefinition.Assembly.Write(new FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName + "\\SimpleLib.dll");
+                            moduleDefinition.Assembly.Write(PathToLibraryToRewrite);
 
                             break;
                         }

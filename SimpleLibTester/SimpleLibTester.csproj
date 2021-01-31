@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="SimpleLib">
-      <HintPath>..\SimpleConsoleAppRewriter\bin\Debug\net5.0\SimpleLib.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\SimpleLib\SimpleLib.csproj" />
   </ItemGroup>
 
 </Project>
